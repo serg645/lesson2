@@ -1,11 +1,13 @@
--module(lesson2_task10).
--export([encode/1]).
+-module(lesson2_task11).
+-export([encode_modified/1]).
 
 
-encode(List)->encode(pack(List), []).
+encode_modified(List)->encode_modified(pack(List), []).
 
-encode([], List)->reverse(List);
-encode([[H|T1]|T2], List)->encode(T2, [{len(T1)+1, H}|List]).
+encode_modified([], List)->reverse(List);
+encode_modified([[H|[]]|T2], List)->encode_modified(T2, [H|List]);
+encode_modified([[H|T1]|T2], List)->encode_modified(T2, [{len(T1)+1, H}|List]).
+
 
 pack(List)->pack(List, []).
 
